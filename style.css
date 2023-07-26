@@ -87,19 +87,15 @@ li {
     padding-bottom: 1.5em;
 }
 
-.usuwanie {
+#usun {
+    background-color: black;
+    color: white;
+    transition: 0.5s;
+    border: none;
     margin-left: 1em;
 }
 
-#usuwaniebutton {
-    background-color: black;
-    color: white;
-    width: 43px;
-    height: 43px;
-    transition: 0.5s;
-}
-
-#usuwaniebutton:hover {
+#usun:hover {
+    background-color: green;
     color: black;
-    background-color: white;
 }

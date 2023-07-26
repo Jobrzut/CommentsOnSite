@@ -24,7 +24,7 @@
     </div>
     <?php 
 
-    $sql = "SELECT * FROM userscomments ORDER BY reg_date DESC"; 
+    $sql = "SELECT * FROM userscomments WHERE visible = 1 ORDER BY reg_date DESC"; 
     $result = mysqli_query($conn, $sql);
 
     if(mysqli_num_rows($result) > 0) {
@@ -37,10 +37,28 @@
             echo '<p id="commenttext">';
             echo $row["comment"];
             echo '</p>';
+            echo '<form action="'.htmlspecialchars($_SERVER["PHP_SELF"]).'" method="post">';
+            echo '<input type="hidden" name="comment_id" value="'.$row["id"].'">';
+            echo '<input type="submit" name="delete_comment" value="Usuń" id="usun">';
+            echo '</form>';
             echo '</li>';
-            echo '<ul class="comment-container">';
             }
         };
+
+        if(isset($_POST['delete_comment']) && isset($_POST['comment_id'])){
+            $comment_id = $_POST['comment_id'];
+            $sql = "UPDATE userscomments SET visible = 0 WHERE id = ?";
+            $stmt = mysqli_prepare($conn, $sql);
+            mysqli_stmt_bind_param($stmt, "i", $comment_id);
+
+            try {
+                mysqli_stmt_execute($stmt);
+                header('Location: .');
+                exit;
+            } catch (mysqli_sql_exception $e) {
+                echo "Nie udało się usunąć komentarza :/";
+            }
+        }
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_SPECIAL_CHARS);
@@ -62,23 +80,5 @@
                 echo "Nie udało się :/";
             }
         }
-    }
-?>
-    <form action="index.php" method="post">
-        <div class="usuwanie">
-            <p>Podaj id komentarza który chcesz usunąć:</p>
-            <input type="number" name="number">
-            <input type="submit" name="delete" id="usuwaniebutton" value="✓">
-        </div>
-    </form>
-</body>
-</html>
-
-<?php
-    if (isset($_POST["delete"])) {
-        $whichid = filter_input(INPUT_POST, "number", FILTER_SANITIZE_SPECIAL_CHARS);
-        $sql = "DELETE FROM userscomments WHERE id = {$whichid}";
-        mysqli_query($conn, $sql);
-        header('Location: .');
     }
 ?>
