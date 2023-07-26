@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;700;900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+h1 {
+    color: black;
+    font-size: 70px;
+}
+
+span {
+    color: green;
+}
+
+h2 {
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.formular {
+    width: max-content;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.formular h2 {
+    text-align: left;
+}
+
+input, textarea {
+    padding: .8em;
+    margin-bottom: 1em;
+    border-radius: .3em;
+    border: 1px solid gray;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
+#formbutton {
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    font-size: 1.3em;
+    border: none;
+    margin-bottom: 5em;
+    border-radius: 1em;
+    display: inline-block;
+    padding: .8em 2em;
+    width: unset;
+    cursor: pointer;
+    transition: 0.5s;
+  }
+
+#formbutton:hover {
+    background: white;
+    color: green;
+  }
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+li {
+    background-color: green;
+    margin-bottom: 1em;
+    color: white;
+}
+
+#user {
+    font-size: 18px;
+    padding-left: 1em;
+    padding-top: 1em;
+}
+
+#commenttext {
+    font-weight: 300;
+    padding-left: 3em;
+    padding-bottom: 1.5em;
+}
+
+.usuwanie {
+    margin-left: 1em;
+}
+
+#usuwaniebutton {
+    background-color: black;
+    color: white;
+    width: 43px;
+    height: 43px;
+    transition: 0.5s;
+}
+
+#usuwaniebutton:hover {
+    color: black;
+    background-color: white;
+}
